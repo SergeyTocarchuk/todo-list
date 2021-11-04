@@ -6,3 +6,43 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
+
+/* navbar */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: black;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-dice-d6 {
+  font-size: 40px;
+}
+
+.title {
+  font-size: 40px;
+  margin-left: 10px;
+}
+
+.btn-open-nav {
+  display: none;
+  width: 40px;
+  padding: 0;
+  color: white;
+  background-color: black;
+  border: none;
+  font-size: 40px;
+}
+
+.active {
+  display: block;
+}
