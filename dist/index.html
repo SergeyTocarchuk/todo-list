@@ -19,9 +19,28 @@
   </header>
 
   <main class="container">
-    <div class="task-add">
-      <div id="task-list" class="task-add"></div>
-      <button id="button-add-task" class="button-add-task">Add Task</button>
+    <div class="task-popup">
+      <div id="task-popup" class="task-popup">
+        <div class="add-task-popup" id="add-task-popup">
+          <input
+            class="input-add-task"
+            id="input-add-task"
+            type="text"
+          />
+          <div class="add-task-popup-buttons">
+            <button class="button-add-task" id="button-add-task">
+              Add
+            </button>
+            <button
+              class="button-cancel-task-popup"
+              id="button-cancel-task-popup"
+              >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      <button id="button-add-task-popup" class="button-add-task-popup">Add Task</button>
     </div>
   </main>
 

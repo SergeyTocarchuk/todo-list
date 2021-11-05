@@ -58,7 +58,7 @@
   overflow: scroll;
 }
 
-.task-add {
+.task-popup {
   max-width: 900px;
   padding: 20px 40px;
   margin: 0 auto;
@@ -87,14 +87,14 @@ input {
   border: 1px solid green;
 }
 
-.button-add-task {
+.button-add-task-popup {
   display: block;
   padding-left: 15px;
   margin-top: 10px;
   text-align: left;
 }
 
-.button-add-task.hide {
+.button-add-task-popup.hide {
   display: none;
 }
 
@@ -109,7 +109,7 @@ input {
   display: block;
 }
 
-.input-add-task-popup {
+.input-add-task {
   border: 1px solid #aaa;
   margin-bottom: 10px;
 }
@@ -121,13 +121,13 @@ input {
   gap: 20px;
 }
 
-.button-add-task-popup {
+.button-add-task {
   border: 1px solid #99dd99;
   background-color: #aaffaa;
   font-weight: bold;
 }
 
-.button-cancel-task {
+.button-cancel-task-popup {
   border: 1px solid #eeadad;
   background-color: #ffbebe;
   font-weight: bold;

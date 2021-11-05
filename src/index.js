@@ -1,55 +1,50 @@
 import _ from 'lodash';
 import './style.css';
 
-const openNavButton = document.getElementById('btn-open-nav');
-openNavButton.addEventListener('click', openNav);
+// const openNavButton = document.getElementById('btn-open-nav');
+// openNavButton.addEventListener('click', openNav);
 
-function openNav(){
-  openNavButton.classList.toggle('active');
-}
+// function openNav(){
+//   openNavButton.classList.toggle('active');
+// }
+
+const btnOpenAddTaskPopup = document.getElementById('button-add-task-popup');
+btnOpenAddTaskPopup.addEventListener('click', openAddTaskPopup);
+
+const taskPopup = document.getElementById('add-task-popup');
+
+// Task popup buttons
 
 const btnAddTask = document.getElementById('button-add-task');
-btnAddTask.addEventListener('click', createTask);
+btnAddTask.addEventListener('click', addTask);
+const btnCancelTask = document.getElementById('button-cancel-task-popup');
+btnCancelTask.addEventListener('click', closeAddTaskPopup);
 
+// let myTasks = JSON.parse(window.localStorage.getItem("localStorageTasks"));
 
-
-function createTask(){
-  const taskList = document.getElementById('task-list');
-  taskList.innerHTML = `
-  <div class="add-task-popup" id="add-task-popup">
-    <input
-      class="input-add-task-popup"
-      id="input-add-task-popup"
-      type="text"
-    />
-    <div class="add-task-popup-buttons">
-      <button class="button-add-task-popup" id="button-add-task-popup">
-        Add
-      </button>
-      <button
-        class="button-cancel-task"
-        id="button-cancel-task"
-        >
-        Cancel
-      </button>
-    </div>
-  </div>`
-  openAddTaskPopup();
-
-  const btnCancelTask = document.getElementById('button-cancel-task');
-  btnCancelTask.addEventListener('click', closeAddTaskPopup);
+function addTask() {
+  const inputAddTask = document.getElementById('input-add-task');
+  console.log(inputAddTask.value);
 }
 
 function openAddTaskPopup() {
-  const addTaskPopup = document.getElementById('add-task-popup');
-  addTaskPopup.classList.add('active');
-
-  btnAddTask.classList.add('hide');
+  taskPopup.classList.add('active');
+  btnOpenAddTaskPopup.classList.add('hide');
 }
 
 function closeAddTaskPopup() {
-  const addTaskPopup = document.getElementById('add-task-popup');
-  addTaskPopup.classList.remove('active');
-  
-  btnAddTask.classList.remove('hide');
+  taskPopup.classList.remove('active');
+  btnOpenAddTaskPopup.classList.remove('hide');
 }
+
+// function addTaskToLocalStorage(task) {
+//   if (myTasks != null){
+//     myTasks.push(book);
+//     window.localStorage.setItem("localStorageTasks", JSON.stringify(myTasks));
+//   } else {
+//     myTasks = [];
+//     myTasks.push(book);
+//     window.localStorage.setItem("localStorageTasks", JSON.stringify(myTasks));
+//   }
+//   console.log(myTasks);
+// }
