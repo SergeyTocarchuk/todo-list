@@ -17,14 +17,13 @@ const taskPopup = document.getElementById('add-task-popup');
 
 const btnAddTask = document.getElementById('button-add-task');
 btnAddTask.addEventListener('click', addTask);
+
 const btnCancelTask = document.getElementById('button-cancel-task-popup');
 btnCancelTask.addEventListener('click', closeAddTaskPopup);
 
-// let myTasks = JSON.parse(window.localStorage.getItem("localStorageTasks"));
-
 function addTask() {
   const inputAddTask = document.getElementById('input-add-task');
-  console.log(inputAddTask.value);
+  addTaskToLocalStorage(inputAddTask.value);
 }
 
 function openAddTaskPopup() {
@@ -37,14 +36,16 @@ function closeAddTaskPopup() {
   btnOpenAddTaskPopup.classList.remove('hide');
 }
 
-// function addTaskToLocalStorage(task) {
-//   if (myTasks != null){
-//     myTasks.push(book);
-//     window.localStorage.setItem("localStorageTasks", JSON.stringify(myTasks));
-//   } else {
-//     myTasks = [];
-//     myTasks.push(book);
-//     window.localStorage.setItem("localStorageTasks", JSON.stringify(myTasks));
-//   }
-//   console.log(myTasks);
-// }
+let myTasks = JSON.parse(window.localStorage.getItem("localStorageTasks"));
+
+function addTaskToLocalStorage(task) {
+  if (myTasks != null){
+    myTasks.push(task);
+    window.localStorage.setItem("localStorageTasks", JSON.stringify(myTasks));
+  } else {
+    myTasks = [];
+    myTasks.push(book);
+    window.localStorage.setItem("localStorageTasks", JSON.stringify(myTasks));
+  }
+  console.log(myTasks);
+}
