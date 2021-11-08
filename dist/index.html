@@ -8,17 +8,32 @@
   <script src="https://kit.fontawesome.com/1722d623e9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="nav">
+  <nav>
     <div class="logo">
       <i class="fas fa-dice-d6"></i>
       <h1 class="title">ToDo List</h1>
     </div>
-    <button id="btn-open-nav" class="btn-open-nav active">
-      <i class="fas fa-bars"></i>
-    </button>
-  </header>
+    <div class="right-nav">
+      <ul>
+        <li>inbox
+          <ul class="drop-menu menu-list">
+            <li id="nav-add-task">add task</li>
+            <li id="show-list">show tasks</li>
+          </ul>
+        </li>
+      </ul>
+      <button id="btn-open-nav" class="btn-open-nav active">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
 
   <main class="container">
+    <!-- display tasks list -->
+    <div id="task-list" class="task-list">
+      
+    </div>
+    <!-- add task section -->
     <div class="task-popup">
       <div id="task-popup" class="task-popup">
         <div class="add-task-popup" id="add-task-popup">
