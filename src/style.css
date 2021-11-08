@@ -55,6 +55,7 @@ nav > div > ul > li {
   float: left;
   width: 150px;
   height: 65px;
+  padding-left: 10px;
   line-height: 65px;
   position: relative;
   text-transform: uppercase;
@@ -73,6 +74,7 @@ ul.drop-menu {
 ul.drop-menu li {
   background: black;
   color: white;
+  padding: 10px;
 }
 ul.drop-menu li:hover {
   background: #606060;

@@ -56,27 +56,19 @@ function addTaskToLocalStorage(task) {
     window.localStorage.setItem("localStorageTasks", JSON.stringify(myTasks));
   }
   displayTasksList();
-  console.log(myTasks);
 }
 
 function displayTasksList() {  
+  let showTasksList = document.createElement('ul');
+  const tasksList = document.getElementById('task-list');
   for( let i = 0; i < myTasks.length; i++ ){
-    console.log(myTasks[i]);
-    const tasksList = document.getElementById('task-list');
-    tasksList.innerHTML = 
-        `<span>${myTasks[i]}</span>
-      <button class="button-task" data-task-button>
-        <div class="left-task-panel">
-          <i class="far fa-circle"></i>
-          <p class="task-content">${myTasks[i]}</p>
-          <input type="text" class="input-task-name" data-input-task-name>
-        </div>
-        <div class="right-task-panel">
-          <p class="due-date" id="due-date">${myTasks[i+1]}</p>
-          <input type="date" class="input-due-date" data-input-due-date>
-          <i class="fas fa-times"></i>
-        </div>
-      </button>
-    `
+    let listItem = document.createElement('li');
+    listItem.innerHTML = `
+      <div class="left-task-panel">
+        <i class="far fa-circle"></i>
+        ${myTasks[i]}
+      </div>`
+    showTasksList.appendChild(listItem);
   }
+  tasksList.appendChild(showTasksList);
 }
