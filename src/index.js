@@ -19,6 +19,7 @@ const btnOpenAddTaskPopup = document.getElementById('button-add-task-popup');
 btnOpenAddTaskPopup.addEventListener('click', openAddTaskPopup);
 
 const taskPopup = document.getElementById('add-task-popup');
+const tasksList = document.getElementById('task-list');
 
 // Task popup buttons
 
@@ -58,17 +59,26 @@ function addTaskToLocalStorage(task) {
   displayTasksList();
 }
 
-function displayTasksList() {  
-  let showTasksList = document.createElement('ul');
-  const tasksList = document.getElementById('task-list');
+function displayTasksList() {
+  clearCurrentDisplay();
+  const showTasksList = document.createElement('ul');
   for( let i = 0; i < myTasks.length; i++ ){
     let listItem = document.createElement('li');
     listItem.innerHTML = `
-      <div class="left-task-panel">
+      <div class="task-panel">
         <i class="far fa-circle"></i>
-        ${myTasks[i]}
+        <p>${myTasks[i]}</p>
+        <input type="text" id="input-task-name" class="input-task-name">
       </div>`
     showTasksList.appendChild(listItem);
   }
   tasksList.appendChild(showTasksList);
+}
+
+function clearCurrentDisplay() {
+  let currentDisplay = tasksList.lastElementChild;
+  while (currentDisplay) {
+    tasksList.removeChild(currentDisplay);
+    currentDisplay = tasksList.lastElementChild;
+  }
 }

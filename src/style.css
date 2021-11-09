@@ -244,6 +244,10 @@ input {
   overflow: scroll;
 }
 
+.task-list > ul {
+  list-style: none;
+}
+
 .button-task {
   display: flex;
   align-items: center;
@@ -257,7 +261,7 @@ input {
   background-color: var(--secondary-light);
 } */
 
-.left-task-panel {
+.task-panel {
   display: flex;
   align-items: center;
 }
@@ -267,8 +271,14 @@ input {
   cursor: pointer;
 }
 
-.task-content {
+.task-panel > p {
   cursor: pointer;
+  padding-left: 5px;
+  font-size: 24px;
+}
+
+.task-panel > p:hover {
+  text-decoration: line-through;
 }
 
 /* .task-content.active {
@@ -276,20 +286,15 @@ input {
 } */
 
 .input-task-name {
-  /* display: none; */
+  display: none;
   height: 24px;
   padding: 5px;
   border: 1px solid #555;
   background-color: #eee;
 }
 
-/* .input-task-name.active {
+.input-task-name.active {
   display: block;
-} */
-
-.right-task-panel {
-  display: flex;
-  align-items: center;
 }
 
 .input-due-date {
