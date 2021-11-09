@@ -69,6 +69,7 @@ function displayTasksList() {
         <button class="mark-as-done" data-id="${i}">
           <i class="far fa-circle"></i>
           <p class="task-item">${myTasks[i]}</p>
+          <i class="fas fa-archive"></i>
         </button>
         <input type="text" id="input-task-name" class="input-task-name">
       </div>`
@@ -76,6 +77,7 @@ function displayTasksList() {
   }
   tasksList.appendChild(showTasksList);
   toggleTaskStatus();
+  removeTask();
 }
 
 function clearCurrentDisplay() {
@@ -93,8 +95,22 @@ function toggleTaskStatus() {
       markAsReadBtn.addEventListener('click', (e) => {
         if (e.target.classList.contains('fa-circle')) {
           let taskId = markAsReadBtn.dataset.id;
-          markAsReadButtons[taskId].lastElementChild.classList.toggle('task-done');
+          markAsReadButtons[taskId].children[1].classList.toggle('task-done');
         }
+      })
+    })
+  }
+}
+
+function removeTask() {
+  const removeTaskButtons = document.querySelectorAll('.mark-as-done');
+  if (removeTaskButtons) {
+    Array.from(removeTaskButtons).forEach(function (removeTaskBtn) {
+      removeTaskBtn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('fa-archive')) {
+          myTasks.splice(removeTaskBtn.dataset.id, 1);
+        }
+        displayTasksList();
       })
     })
   }

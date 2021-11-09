@@ -250,8 +250,8 @@ input {
 
 .mark-as-done {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  /* justify-content: space-between; */
   padding: 10px;
   background-color: #ddd;
   cursor: default;
@@ -264,10 +264,11 @@ input {
 .task-panel {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .fa-circle {
-  font-size: 24px;
+  font-size: 15px;
   cursor: pointer;
 }
 
@@ -279,11 +280,18 @@ input {
 
 .task-panel > button > p.task-done {
   text-decoration: line-through;
+  color: red;
 }
 
 /* .task-content.active {
   display: none;
 } */
+
+.fa-archive {
+  font-size: 15px;
+  cursor: pointer;
+  padding-left: 10px;
+}
 
 .input-task-name {
   display: none;
