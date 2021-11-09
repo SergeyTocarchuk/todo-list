@@ -62,22 +62,26 @@ function addTaskToLocalStorage(task) {
 function displayTasksList() {
   clearCurrentDisplay();
   const showTasksList = document.createElement('ul');
-  for( let i = 0; i < myTasks.length; i++ ){
-    let listItem = document.createElement('li');
-    listItem.innerHTML = `
-      <div class="task-panel">
-        <button class="mark-as-done" data-id="${i}">
-          <i class="far fa-circle"></i>
-          <p class="task-item">${myTasks[i]}</p>
-          <i class="fas fa-archive"></i>
-        </button>
-        <input type="text" id="input-task-name" class="input-task-name">
-      </div>`
-    showTasksList.appendChild(listItem);
+  if (myTasks.length > 0) {
+    for( let i = 0; i < myTasks.length; i++ ){
+      let listItem = document.createElement('li');
+      listItem.innerHTML = `
+        <div class="task-panel">
+          <button class="mark-as-done" data-id="${i}">
+            <i class="far fa-circle"></i>
+            <p class="task-item">${myTasks[i]}</p>
+            <i class="fas fa-archive"></i>
+          </button>
+          <input type="text" id="input-task-name" class="input-task-name">
+        </div>`
+      showTasksList.appendChild(listItem);
+    }
+    tasksList.appendChild(showTasksList);
+    toggleTaskStatus();
+    removeTask();
+  } else {
+    tasksList.innerHTML = `<span>You have no tasks yet</span>`
   }
-  tasksList.appendChild(showTasksList);
-  toggleTaskStatus();
-  removeTask();
 }
 
 function clearCurrentDisplay() {
@@ -110,7 +114,11 @@ function removeTask() {
         if (e.target.classList.contains('fa-archive')) {
           myTasks.splice(removeTaskBtn.dataset.id, 1);
         }
-        displayTasksList();
+        if (myTasks.length > 0) {
+          displayTasksList();
+        } else {
+          tasksList.innerHTML = "";
+        }
       })
     })
   }
