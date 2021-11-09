@@ -248,10 +248,10 @@ input {
   list-style: none;
 }
 
-.button-task {
+.mark-as-done {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 10px;
   background-color: #ddd;
   cursor: default;
@@ -271,13 +271,13 @@ input {
   cursor: pointer;
 }
 
-.task-panel > p {
+.task-panel > button > p {
   cursor: pointer;
   padding-left: 5px;
   font-size: 24px;
 }
 
-.task-panel > p:hover {
+.task-panel > button > p.task-done {
   text-decoration: line-through;
 }
 

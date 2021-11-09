@@ -66,13 +66,16 @@ function displayTasksList() {
     let listItem = document.createElement('li');
     listItem.innerHTML = `
       <div class="task-panel">
-        <i class="far fa-circle"></i>
-        <p>${myTasks[i]}</p>
+        <button class="mark-as-done" data-id="${i}">
+          <i class="far fa-circle"></i>
+          <p class="task-item">${myTasks[i]}</p>
+        </button>
         <input type="text" id="input-task-name" class="input-task-name">
       </div>`
     showTasksList.appendChild(listItem);
   }
   tasksList.appendChild(showTasksList);
+  toggleTaskStatus();
 }
 
 function clearCurrentDisplay() {
@@ -82,3 +85,22 @@ function clearCurrentDisplay() {
     currentDisplay = tasksList.lastElementChild;
   }
 }
+
+function toggleTaskStatus() {
+  const markAsReadButtons = document.querySelectorAll('.mark-as-done');
+  if (markAsReadButtons) {
+    Array.from(markAsReadButtons).forEach(function (markAsReadBtn) {
+      markAsReadBtn.addEventListener('click', (e) => {
+      if (e.target.classList.contains('fa-circle')) {
+        console.log(markAsReadBtn.dataset.id);
+        }
+      })
+    })
+  }
+}
+
+// function toggleTaskStatus(id) {
+//   const taskItems = document.querySelectorAll('.task-item');
+//   taskItems.forEach((item) =>
+//     item.classList.toggle('task-done'));
+// }
