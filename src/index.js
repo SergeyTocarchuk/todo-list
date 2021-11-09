@@ -91,16 +91,11 @@ function toggleTaskStatus() {
   if (markAsReadButtons) {
     Array.from(markAsReadButtons).forEach(function (markAsReadBtn) {
       markAsReadBtn.addEventListener('click', (e) => {
-      if (e.target.classList.contains('fa-circle')) {
-        console.log(markAsReadBtn.dataset.id);
+        if (e.target.classList.contains('fa-circle')) {
+          let taskId = markAsReadBtn.dataset.id;
+          markAsReadButtons[taskId].lastElementChild.classList.toggle('task-done');
         }
       })
     })
   }
 }
-
-// function toggleTaskStatus(id) {
-//   const taskItems = document.querySelectorAll('.task-item');
-//   taskItems.forEach((item) =>
-//     item.classList.toggle('task-done'));
-// }
