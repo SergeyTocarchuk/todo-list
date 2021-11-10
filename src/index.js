@@ -77,8 +77,7 @@ function displayTasksList() {
       showTasksList.appendChild(listItem);
     }
     tasksList.appendChild(showTasksList);
-    toggleTaskStatus();
-    removeTask();
+    initButtons();
   } else {
     tasksList.innerHTML = `<span>You have no tasks yet</span>`
   }
@@ -92,34 +91,30 @@ function clearCurrentDisplay() {
   }
 }
 
-function toggleTaskStatus() {
-  const markAsReadButtons = document.querySelectorAll('.mark-as-done');
-  if (markAsReadButtons) {
-    Array.from(markAsReadButtons).forEach(function (markAsReadBtn) {
-      markAsReadBtn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('fa-circle')) {
-          let taskId = markAsReadBtn.dataset.id;
-          markAsReadButtons[taskId].children[1].classList.toggle('task-done');
-        }
-      })
+function initButtons() {
+  const listTaskButtons = document.querySelectorAll('.mark-as-done');
+  Array.from(listTaskButtons).forEach(function (listTaskBtn) {
+    listTaskBtn.addEventListener('click', (e) => {
+      if (e.target.classList.contains('fa-archive')) {
+        removeTask(listTaskBtn.dataset.id);
+      }
+      if (e.target.classList.contains('fa-circle')) {
+        toggleTaskStatus(listTaskBtn.dataset.id);
+      }
     })
+  })
+}
+
+function removeTask(index) {
+  myTasks.splice(index, 1);
+  if (myTasks.length > 0) {
+    displayTasksList();
+  } else {
+    tasksList.innerHTML = "";
   }
 }
 
-function removeTask() {
-  const removeTaskButtons = document.querySelectorAll('.mark-as-done');
-  if (removeTaskButtons) {
-    Array.from(removeTaskButtons).forEach(function (removeTaskBtn) {
-      removeTaskBtn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('fa-archive')) {
-          myTasks.splice(removeTaskBtn.dataset.id, 1);
-        }
-        if (myTasks.length > 0) {
-          displayTasksList();
-        } else {
-          tasksList.innerHTML = "";
-        }
-      })
-    })
-  }
+function toggleTaskStatus(index) {
+  const markAsReadButtons = document.querySelectorAll('.mark-as-done');
+  markAsReadButtons[index].children[1].classList.toggle('task-done');
 }
