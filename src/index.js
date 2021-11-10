@@ -26,11 +26,17 @@ const tasksList = document.getElementById('task-list');
 const btnAddTask = document.getElementById('button-add-task');
 btnAddTask.addEventListener('click', addTask);
 
+const inputAddTask = document.getElementById('input-add-task');
+inputAddTask.addEventListener('keypress', handleAddTaskInput);
+
+function handleAddTaskInput(e) {
+  if (e.key === 'Enter') addTask();
+}
+
 const btnCancelTask = document.getElementById('button-cancel-task-popup');
 btnCancelTask.addEventListener('click', closeAddTaskPopup);
 
 function addTask() {
-  const inputAddTask = document.getElementById('input-add-task');
   addTaskToLocalStorage(inputAddTask.value);
   closeAddTaskPopup();
 }
